@@ -1,0 +1,205 @@
+<!-- Carousel -->
+<div class="container"
+>
+  <!--Carousel Wrapper-->
+  <div
+    id="carousel-example-2"
+    class="carousel slide carousel-fade"
+    data-ride="carousel"
+  >
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li
+        data-target="#carousel-example-2"
+        data-slide-to="0"
+        class="active"
+      ></li>
+      <li data-target="#carousel-example-2" data-slide-to="1"></li>
+      <li data-target="#carousel-example-2" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div
+        *ngFor="let carouselItem of carouselList; let i = index"
+        class="carousel-item {{ i === 0 ? 'active' : '' }}"
+      >
+        <div class="view">
+          <img
+            class="d-block w-100"
+            [src]="carouselItem.bannerImg"
+            alt="First slide"
+          />
+          <div class="mask rgba-black-light"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">{{ carouselItem.title }}</h3>
+          <p>{{ carouselItem.description }}</p>
+        </div>
+      </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a
+      class="carousel-control-prev"
+      href="#carousel-example-2"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carousel-example-2"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+
+  <div class="gallery lobster-font-family" id="blog">
+    <div class="container">
+      <h3 class="text-calitalize text-center">CATEGORY</h3>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="pic-one"><h4>Hand Bag</h4></div>
+          <div class="pic-two"><h4>High Heels</h4></div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="pic-three active"><h4>Clothes</h4></div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="pic-four"><h4>Women's Watches</h4></div>
+          <div class="pic-five"><h4>Sport Shoes</h4></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <app-best-product></app-best-product>
+
+
+  <div class="about lobster-font-family">
+    <div class="container">
+      <h3 class="text-center text-capitalize">Hublot Watches</h3>
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <h4>Elegant design and diamond studded</h4>
+          <p>Hublot is a famous watch company that is very hot in the domestic and foreign markets, now it's back. Quartz movement (European technology) Female size: 37mm Aromatic silicon wire, sapphier stone surface colorless, scratch-resistant, impact resistant Strictly tested when shipped, 3 ATM water resistant (main exposure to chemicals and acids) </p>
+          <button><a href="#">Read more</a></button>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="img"></div>
+        </div>
+      </div>
+      <h3 class="text-capitalize" id="room">Charles & Keith</h3>
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <div class="img"></div>
+        </div>
+        <div class="col-lg-8 col-12">
+          <div class="block">
+            <div>
+              <strong>$405</strong>
+              <h5>Singapore fashion for women</h5>
+              <p>Charles & Keith Classic Push-Lock Top Handle Bag White is a high-end fashion brand handbag, with youthful and modern design. This Charles & Keith handbag is a bag for girls who love the youthfulness.</p>
+              <button><a href="#" class="text-capitalize">Read more</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Start-->
+  <div class="feature">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-6 feature-col">
+          <div class="feature-content">
+            <i class="fa fa-bullhorn icon-fea4"></i>
+            <h2>Secure Payment</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur elit
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 feature-col">
+          <div class="feature-content">
+            <i class="fa fa-truck"></i>
+            <h2>Worldwide Delivery</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur elit
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 feature-col">
+          <div class="feature-content">
+            <i class="fa fa-recycle icon-fea4"></i>
+            <h2>90 Days Return</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur elit
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 feature-col">
+          <div class="feature-content">
+            <i class="fa fa-comments"></i>
+            <h2>24/7 Support</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur elit
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Feature End-->
+
+  <!-- Main Slider Start -->
+  <div class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8">
+          <div class="header-slider normal-slider">
+            <div class="header-slider-item">
+              <img src="./assets/img/new6.jpg" alt="Slider Image" width="1000px" height="500px" />
+              <div class="header-slider-caption">
+                <p>Modern fashion trend</p>
+                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="header-img">
+            <div class="img-item">
+              <img src="./assets/img/p2.jpg" width="400px" height="260px"/>
+              <a class="img-text" href="">
+                <p>Hublot Watches</p>
+              </a>
+            </div>
+            <div class="img-item">
+              <img src="./assets/img/p1.jpg" width="400px" height="260px"/>
+              <a class="img-text" href="">
+                <p>Charles & Keith</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/><br/><br/>
+  <!-- Main Slider End -->
+
+  <!-- ------------footer----------- -->
+<app-footer></app-footer>
+  <!-- ------------footer----------- -->
+</div>
+

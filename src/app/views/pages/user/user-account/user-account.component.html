@@ -1,0 +1,52 @@
+<div class="col-md-8" *ngIf="isLogin">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Full Name</h6>
+        </div>
+        <div *ngIf="!isFullNameUpdate" class="col-sm-9 text-secondary">
+          {{ showUser.name }}
+        </div>
+        <div *ngIf="isFullNameUpdate" class="col-sm-9 text-secondary">
+          <input type="text" [(ngModel)]="showUser.name">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Email</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ showUser.email }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Phone</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ showUser.mobile }}
+        </div>
+      </div>
+      <hr>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Address</h6>
+        </div>
+        <div *ngIf="!isFullNameUpdate" class="col-sm-9 text-secondary">
+          {{ showUser.address }}
+        </div>
+        <div *ngIf="isFullNameUpdate" class="col-sm-9 text-secondary">
+          <input type="text" [(ngModel)]="showUser.address">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3">
+    <button class="btn btn-info" (click)="updateName()" >Edit</button>
+    <button style="margin-left: 450px" type="submit"  class="btn btn-outline-success" (click)="updateName()" (click)="updateUser()">Update</button>
+  </div>
+</div>

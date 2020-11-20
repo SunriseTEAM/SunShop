@@ -1,0 +1,36 @@
+<div class="container">
+  <ul class="list-group mb-3">
+    <li
+      class="list-group-item d-flex justify-content-between lh-condensed"
+      *ngFor="let cart of cartObj"
+    >
+      <div>
+        <img
+          [src]="'http://localhost:8090/api/product/getimage/'+cart.images + '.jpg'"
+          width="150"
+          height="100"
+        />
+      </div>
+      <div style="padding: 10px;">
+        <h6 class="my-0">{{ cart.name }}</h6>
+<!--        <p>Product Seller : {{ cart.productSeller }}</p>-->
+      </div>
+      <span class="text-muted">₹ {{ cart.price }}</span>
+    </li>
+    <hr />
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Total (INR)</span>
+      <strong>₹ {{ cartTotalPrice }}</strong>
+    </li>
+  </ul>
+  <div class="float-right">
+    <a
+      class="btn btn-default"
+      [routerLink]="[
+        '/checkouts',
+        { outlets: { checkOutlet: ['shipping-details'] } }
+      ]"
+      routerLinkActive="active"
+      >Next</a>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<!--Section: Products v.2-->
+<section class="section pb-3">
+  <div class="row">
+    <div class="col-md-6">
+      <blockquote class="blockquote float-left bq-primary">
+        <h3 class="bq-title">
+          {{ translate.data["BESTPRODUCTS"] | translate }}
+        </h3>
+      </blockquote>
+    </div>
+    <div class="col-md-6">
+      <a
+        class="btn btn-default float-right"
+        [routerLink]="['/products/all-products']"
+        >{{ translate.data["VIEWALL"] | translate }}</a
+      >
+    </div>
+  </div>
+
+  <div *ngIf="loading">
+    <app-card-loader [loop]="4" [height]="500"></app-card-loader>
+  </div>
+
+  <owl-carousel
+    *ngIf="!loading"
+    [options]="options"
+    [items]="bestProducts"
+    [carouselClasses]="['owl-theme', 'row', 'sliding']"
+  >
+    <!--First column-->
+    <div
+      class="item"
+      style="padding: 20px;"
+      *ngFor="let data of productsList; let i = index"
+    >
+      <div class="mb-r">
+        <!--Card-->
+        <div class="card card-cascade wider">
+          <!--Card image-->
+          <a [routerLink]="['/products/product', data.$key]">
+            <div class="view zoom overlay z-depth-2 rounded">
+              <img class="img-fluid w-100"
+                   [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'" >
+              <a href="#!">
+                <div class="mask">
+                  <img class="img-fluid w-100"
+                       [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'">
+                  <div class="mask rgba-black-slight"></div>
+                </div>
+              </a>
+            </div>
+          </a>
+          <!--/.Card image-->
+
+
+          <!--Card content-->
+          <div class="card-body text-center no-padding">
+            <h5>
+              <strong>
+                <a [routerLink]="['/products/product', data.$key]">{{data.name}}</a>
+              </strong>
+            </h5>
+            <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+            <ul class="rating">
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+            </ul>
+
+            <!--Card footer-->
+            <div class="card-footer">
+              <div class="pt-4">
+                <h6 class="mb-3"><span>${{data.price}}</span></h6>
+                <button type="button" class="btn btn-primary btn-sm mr-1 mb-2">
+                  <i class="fa fa-shopping-cart pr-2"></i>Add to cart
+                </button>
+                <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
+                  <i class="fa fa-info-circle pr-2"></i>Details
+                </button>
+                <button type="button" class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
+                  <i class="fa fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!--/.Card content-->
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--/First column-->
+    </div>
+  </owl-carousel>
+</section>
+<!--Section: Products v.2-->

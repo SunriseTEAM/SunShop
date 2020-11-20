@@ -1,0 +1,37 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted">Your cart</span>
+  <span class="badge badge-primary badge-pill"></span>
+</h4>
+<ul class="list-group mb-3">
+  <li
+    class="list-group-item d-flex justify-content-between lh-condensed"
+    *ngFor="let cart of cartObj">
+    <div>
+      <h6 class="my-0">{{ cart.name }}</h6>
+    </div>
+    <div>
+      <select  [(ngModel)]="cart.qty" (change)="qtyChange($event.target.value,cart)">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>
+    </div>
+    <span class="text-muted">$ {{ cart.price }}</span>
+  </li>
+  <hr />
+  <li class="list-group-item d-flex justify-content-between">
+    <span>Total (INR)</span>
+    <strong>$ {{ cartTotalPrice }}</strong>
+  </li>
+  <a class="btn btn-primary" [routerLink]="['/products/all-products']"
+    >Continue Shipping</a
+  >
+  <a class="btn btn-default" [routerLink]="['/checkouts']">Checkout</a>
+</ul>

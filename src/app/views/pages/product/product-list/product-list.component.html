@@ -1,0 +1,169 @@
+<img src="./assets/img/aab.jpg" class="img-fluid" alt="" style="height: 500px; width: 1500px"/>
+<br/><br/><br/><br/>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <div class="float-right">
+
+        <button
+          type="button"
+          class="btn btn-primary waves-light"
+          data-toggle="modal"
+          data-target="#exampleModalLong">
+          Add Product
+        </button>
+        <br/><br/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>By Category:</label>
+        <select class="form-control" name=""[(ngModel)]="selectedBrand">
+          <option value="All">Tất cả sản phẩm</option>
+          <a (click)="getAllPRoduct(categoryList)" href="javascript:void(0)">{{categoryList}}</a>
+          <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="container">
+        <app-card-loader
+          [loop]="3"
+          [height]="800"
+          *ngIf="loading">
+        </app-card-loader>
+        <div class="row" *ngIf="!loading">
+          <!-- List of Products -->
+          <div class="col-sm-3 mb-2" *ngFor="let data of productsList | filterByBrand: selectedBrand
+                | paginate: { itemsPerPage: 12, currentPage: page }">
+            <div class="item">
+              <div class="mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider" *ngIf="selectedBrand=== data.category_id ||(selectedBrand==='All')">
+                  <!--Card image-->
+                  <a [routerLink]="['/products/product', data]">
+                    <div class="view zoom overlay z-depth-2 rounded">
+                      <img class="img-fluid w-100"
+                           [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'"
+                           alt="Sample">
+                      <a href="#!">
+                        <div class="mask">
+                          <img class="img-fluid w-100"
+                               [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'">
+                          <div class="mask rgba-black-slight"></div>
+                        </div>
+                      </a>
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <h5>
+                      <strong>
+                        <a [routerLink]="['/products/product', data.$key]">{{data.name}}</a>
+                      </strong>
+                    </h5>
+                    <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+                    <ul class="rating">
+                      <li>
+                        <i class="fa fa-star fa-sm text-primary"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star fa-sm text-primary"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star fa-sm text-primary"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star fa-sm text-primary"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star fa-sm text-primary"></i>
+                      </li>
+                    </ul>
+
+                    <!--Card footer-->
+                    <div class="card-footer">
+                      <div class="pt-4">
+                        <h6 class="mb-3"><span>${{data.price}}</span></h6>
+                        <button type="button" class="btn btn-primary btn-sm mr-1 mb-2" (click)="addCart(data)">
+                          <i class="fa fa-shopping-cart pr-2"></i>Add to cart
+                        </button>
+                        <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
+                          <i class="fa fa-info-circle pr-2"></i>Details
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main"
+                                data-toggle="tooltip" data-placement="top" title="Add to wishlist"
+                                (click)="addFavourite(data)">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!--Card footer-->
+
+                  </div>
+                  <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Pagination -->
+        <div class="text-center mt-3">
+          <pagination-controls
+            (pageChange)="page = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+      <!--/.Card-->
+    </div>
+  </div>
+</div>
+
+<app-add-product></app-add-product>
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Download Our App</h3>
+        <p>Download App for Android and ios mobile phone</p>
+        <div class="app-logo">
+          <img src="./assets/img/play-store.png">
+          <img src="./assets/img/app-store.png">
+        </div>
+      </div>
+      <div class="footer-col-2">
+        <img src="./assets/img/logo-white.png">
+        <p>Our Purpose Is To Sustainably Make the Pleasure and
+          Benefits of Sports Accessible to the Many</p>
+      </div>
+      <div class="footer-col-3">
+        <h3>Useful Links</h3>
+        <ul>
+          <li>Coupons</li>
+          <li>Blog Post</li>
+          <li>Return Policy</li>
+          <li>Join Affiliate</li>
+        </ul>
+      </div>
+      <div class="footer-col-4">
+        <h3>Follow us</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>Youtube</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="Copyright">Copyright 2020 - By SunriseTeam</p>
+  </div>
+</div>
+

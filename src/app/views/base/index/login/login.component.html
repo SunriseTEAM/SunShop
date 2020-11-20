@@ -1,0 +1,201 @@
+<section class="container">
+  <!-- Login form -->
+  <div class="container-form">
+    <div class="col-sm-6">
+      <div class="fonm-content">
+        <br />
+        <br />
+        <br />
+        <br /><br />
+        <form
+          style="width: 22rem;"
+          #loginForm="ngForm">
+          <h3 class="h5 text-center mb-4">SIGN IN</h3>
+          <div class="form-group">
+            <label for="loginEmailId" style="color: white">{{ this.translate.data["Email address or Mobile"] | translate }}</label>
+            <input
+              type="email"
+              [(ngModel)]="mobile"
+              class="form-control"
+              id="loginEmailId"
+              aria-describedby="emailHelp"
+              placeholder="Enter email/Mobile"
+              name="emailId"
+              mdbInputValidate/>
+          </div>
+          <div class="form-group">
+            <label style="color: white">{{ this.translate.data["Password"] | translate }}</label>
+            <input
+              type="password"
+              [(ngModel)]="password"
+              class="form-control"
+              id="loginPassword"
+              name="loginPassword"
+              autocomplete="current-password"
+              placeholder="Password"/>
+          </div>
+
+
+          <div class="text-center">
+            <button
+              type="submit"
+              class="btn btn-primary waves-light mx-2"
+              id="loginButton"
+              routerLink="/"
+              mdbRippleRadius
+              (click)="loginUserCheck()" >
+              {{ this.translate.data["Login"] | translate }}
+            </button>
+
+            <button
+              type="button"
+              class="btn waves-light mx-2 text-white"
+              (click)="signInWithGoogle()"
+              style="background-color: #dd4b39;">
+              <i class="fa fa-google" aria-hidden="true"></i>
+              {{ this.translate.data["Sign in with Google"] | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br />
+    <p style="color: white;text-align: center">
+      {{ this.translate.data["New User"] | translate }} ?
+      <a
+        data-toggle="modal"
+        data-target="#createUserForm"
+        style="color: dodgerblue;">{{ this.translate.data["Register here"] | translate }}!</a>
+    </p>
+  </div>
+
+  <!-- Login form -->
+
+  <!--Modal: Register Form-->
+  <div
+    class="modal fade"
+    id="createUserForm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog cascading-modal" role="document">
+      <form #userForm="ngForm">
+        <div class="modal-content">
+          <div class="modal-header light-blue darken-3 white-text">
+            <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
+            <button
+              type="button"
+              class="close waves-effect waves-light"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="errorInUserCreate"
+            >
+              {{ errorMessage.message }}
+            </div>
+            <div class="form-group form-sm">
+              <label for="emailId">{{ this.translate.data["Your name"] | translate }}</label>
+              <input
+                mdbActive
+                type="text"
+                id="name"
+                class="form-control"
+                name="Name"
+                [(ngModel)]="register.name"
+                placeholder="Enter your name"
+                mdbInputValidate
+                autocomplete="name"
+                required=""
+              />
+            </div>
+            <div class="form-group form-sm">
+              <label for="emailId">{{ this.translate.data["Phone Number"] | translate }}</label>
+              <input
+                mdbActive
+                type="text"
+                id="phone"
+                class="form-control"
+                name="Mobile"
+                [(ngModel)]="register.mobile"
+                placeholder="Enter your phone"
+                mdbInputValidate
+                autocomplete="phone"
+                required=""
+              />
+            </div>
+            <div class="form-group form-sm">
+              <label for="emailId">{{ this.translate.data["Your email"] | translate }}</label>
+              <input
+                mdbActive
+                type="email"
+                id="emailId"
+                class="form-control"
+                name="emailId"
+                [(ngModel)]="register.email"
+                placeholder="Enter email"
+                mdbInputValidate
+                [email]="true"
+                autocomplete="email"
+                required=""
+              />
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">{{ this.translate.data["Password"] | translate }}</label>
+              <input
+                mdbActive
+                type="password"
+                id="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="register.password"
+                placeholder="Password"
+                mdbInputValidate
+                autocomplete="new-password"
+                required=""
+              />
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">{{ this.translate.data["Repassword"] | translate }}</label>
+              <input
+                mdbActive
+                type="password"
+                id="repassword"
+                class="form-control"
+                name="password"
+                [(ngModel)]="register.re_password"
+                placeholder="Password"
+                mdbInputValidate
+                autocomplete="renew-password"
+                required=""
+              />
+            </div>
+            <div class="text-center mt-2">
+              <button
+                class="btn btn-info waves-light"
+                id="signUpButton"
+                mdbRippleRadius
+                (click)="registerUser()"
+                type="submit"
+                value="Create Account">
+                {{ this.translate.data["Sign up"] | translate }}
+                <i class="fa fa-sign-in ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<br />
+<br />
+<br />
