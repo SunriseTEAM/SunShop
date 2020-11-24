@@ -7,6 +7,7 @@ import { filter, map } from "rxjs/operators";
 
 import { User } from "../models/user";
 import { UserService } from "./user.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 export const ANONYMOUS_USER: User = new User();
 
@@ -25,7 +26,8 @@ export class AuthService {
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    public jwtHelper: JwtHelperService
   ) {
     this.user = firebaseAuth.authState;
 
@@ -43,6 +45,14 @@ export class AuthService {
         this.subject.next(ANONYMOUS_USER);
       }
     });
+  }
+  public isAuthenticated(): boolean {
+
+    const token = localStorage.getItem('token');
+
+    // Check whether the token is expired and return
+    // true or false
+    return !!token;
   }
 
   logout() {
