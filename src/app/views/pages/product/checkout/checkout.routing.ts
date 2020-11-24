@@ -6,14 +6,13 @@ import { ProductsComponent } from "./products/products.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "../../../../shared/guards/auth_gaurd";
-import {LoginComponent} from "../../../base/index/login/login.component";
-import {HttpServiceService} from "../../../../shared/services/http-service.service";
+
 
 export const checkoutRoutes: Routes = [
   {
     path: "checkouts",
     component: CheckoutComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: "",
