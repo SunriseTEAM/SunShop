@@ -12,6 +12,7 @@ import { ProductModule } from "./views/pages/product/product.module";
 import { UserModule } from "./views/pages/user/user.module";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 
 export function setupTranslateFactory(service: TranslateService) {
   return () => service.use("en");
@@ -42,6 +43,8 @@ export function setupTranslateFactory(service: TranslateService) {
       deps: [TranslateService],
       multi: true,
     },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
