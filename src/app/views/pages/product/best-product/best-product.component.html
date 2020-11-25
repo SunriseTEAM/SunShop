@@ -83,18 +83,17 @@
             <div class="card-footer">
               <div class="pt-4">
                 <h6 class="mb-3"><span>${{data.price}}</span></h6>
-                <button type="button" class="btn btn-primary btn-sm mr-1 mb-2">
-                  <i class="fa fa-shopping-cart pr-2"></i>Add to cart
-                </button>
-                <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
+                <button type="button" class="btn btn-light btn-sm mr-1 mb-2" [routerLink]="['/products/product', data.id]">
                   <i class="fa fa-info-circle pr-2"></i>Details
                 </button>
-                <button type="button" class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
+                <button type="button" class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to wishlist"
+                        (click)="addFavourite(data)">
                   <i class="fa fa-heart"></i>
                 </button>
               </div>
             </div>
           </div>
+
           <!--/.Card content-->
         </div>
         <!--/.Card-->

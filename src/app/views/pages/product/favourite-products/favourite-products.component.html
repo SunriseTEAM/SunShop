@@ -8,8 +8,8 @@
           <!--Card-->
           <div class="card card-cascade wider">
             <!--Card image-->
-            <a [routerLink]="['/products/product', data.$key]">
-              <div class="view overlay hm-white-slight">
+            <a [routerLink]="['/products/product', data.id]">
+              <div class="view overlay hm-white-slight" >
                 <img
                   [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'"
                   class="img-fluid"
@@ -30,7 +30,7 @@
             <div class="card-body text-center no-padding">
               <!--Category & Title-->
               <a class="text-muted">
-                <h5>{{ data.productCategory }}</h5>
+                <h5>{{ data.category_id }}</h5>
               </a>
               <h5 class="card-title">
                 <strong>
@@ -48,8 +48,7 @@
                     placement="top"
                     mdbTooltip="Quick Look"
                     container="body"
-                    [routerLink]="['/products/product', data.$key]"
-                  >
+                    [routerLink]="['/products/product', data.id]">
                     <i class="fa fa-eye"></i>
                   </a>
                   <a

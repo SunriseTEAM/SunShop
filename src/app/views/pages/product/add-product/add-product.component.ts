@@ -30,7 +30,7 @@ export class AddProductComponent implements OnInit {
     };
 
     if (productForm.value.productImageUrl === undefined) {
-      payload.productImageUrl =
+      payload.images =
         "http://via.placeholder.com/640x360/007bff/ffffff";
     }
 
@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
       this.product = new Product();
       $("#exampleModalLong").modal("hide");
       toastr.success(
-        "product " + payload.productName + "is added successfully",
+        "product " + payload.name + "is added successfully",
         "Product Creation"
       );
     });

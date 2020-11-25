@@ -7,17 +7,23 @@ import {
 import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
 import { ToastrService } from "./toastr.service";
+import {ProductDetail} from "../models/productDetail";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ProductService {
   products: AngularFireList<Product>;
   product: AngularFireObject<Product>;
+  productDetail: AngularFireObject<ProductDetail>;
+  private baseUrl = "http://localhost:8090/api/product/productById";
 
   // favouriteProducts
   favouriteProducts: AngularFireList<FavouriteProduct>;
   cartProducts: AngularFireList<FavouriteProduct>;
 
   constructor(
+    private http: HttpClient,
     private db: AngularFireDatabase,
     private authService: AuthService,
     private toastrService: ToastrService
@@ -28,14 +34,19 @@ export class ProductService {
     return this.products;
   }
 
+  getProductDetail(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+
+  }
+
   createProduct(data: Product, callback: () => void) {
     this.products.push(data);
     callback();
   }
 
   getProductById(key: string) {
-    this.product = this.db.object("products/" + key);
-    return this.product;
+    this.productDetail = this.db.object("products/" + key);
+    return this.productDetail;
   }
 
   updateProduct(data: Product) {
@@ -87,7 +98,7 @@ export class ProductService {
     const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
+      if (products[i].id === product.id) {
         products.splice(i, 1);
         break;
       }
@@ -124,7 +135,7 @@ export class ProductService {
     const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
+      if (products[i].id === product.id) {
         products.splice(i, 1);
         break;
       }

@@ -1,4 +1,4 @@
-export class Product {
+export class ProductDetail {
   $key: string;
   id: number;
   name: string;

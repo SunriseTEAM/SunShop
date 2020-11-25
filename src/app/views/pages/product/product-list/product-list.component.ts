@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
   categoryList: any;
   productsList: any;
   loading = false;
-  selectedBrand="All"
+  selectedBrand="All";
   status ="all";
   page = 1;
 

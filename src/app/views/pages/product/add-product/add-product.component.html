@@ -34,7 +34,7 @@
                 class="form-control"
                 id="productName"
                 name="productName"
-                [(ngModel)]="product.productName"
+                [(ngModel)]="product.name"
                 placeholder="Product Name"
                 value=""
                 required
@@ -50,7 +50,7 @@
                 class="form-control"
                 id="productCategory"
                 name="productCategory"
-                [(ngModel)]="product.productCategory"
+                [(ngModel)]="product.category_id"
                 placeholder="Product Category"
                 value=""
                 required
@@ -72,7 +72,7 @@
               id="productDescription"
               placeholder="Product Description"
               name="productDescription"
-              [(ngModel)]="product.productDescription"
+              [(ngModel)]="product.description"
             ></textarea>
           </div>
 
@@ -83,7 +83,7 @@
                 type="number"
                 name="productPrice"
                 class="form-control"
-                [(ngModel)]="product.productPrice"
+                [(ngModel)]="product.price"
                 placeholder="Product Price"
                 id="productPrice"
                 value=""
@@ -100,7 +100,7 @@
                 class="form-control"
                 id="productQuatity"
                 name="productQuatity"
-                [(ngModel)]="product.productQuatity"
+                [(ngModel)]="product.quatityavi"
                 placeholder="Product Quantity"
                 value=""
                 required
@@ -117,7 +117,7 @@
               type="text"
               class="form-control"
               id="productSeller"
-              [(ngModel)]="product.productSeller"
+              [(ngModel)]="product.seller"
               name="productSeller"
               placeholder="Product Seller"
               required
@@ -129,7 +129,7 @@
               type="text"
               class="form-control"
               id="productImageUrl"
-              [(ngModel)]="product.productImageUrl"
+              [(ngModel)]="product.images"
               name="productImageUrl"
               placeholder="Image Url"
               required
@@ -146,3 +146,4 @@
     </div>
   </div>
 </div>
+

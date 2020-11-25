@@ -25,7 +25,7 @@ export class ResultComponent implements OnInit {
     this.products = productService.getLocalCartProducts();
 
     this.products.forEach((product) => {
-      this.totalPrice += product.productPrice;
+      this.totalPrice += product.price;
     });
 
     this.date = Date.now();

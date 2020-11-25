@@ -323,7 +323,7 @@
                 <!--Card-->
                 <div class="card card-cascade wider" *ngIf="selectedBrand=== data.category_id ||(selectedBrand==='All')">
                   <!--Card image-->
-                  <a [routerLink]="['/products/product', data]">
+                  <a [routerLink]="['/products/product', data.id]">
                     <div class="view zoom overlay z-depth-2 rounded">
                       <img class="img-fluid w-100"
                            [src]="'http://localhost:8090/api/product/getimage/'+data.images + '.jpg'"
@@ -342,7 +342,7 @@
                   <div class="card-body text-center no-padding">
                     <h5>
                       <strong>
-                        <a [routerLink]="['/products/product', data.$key]">{{data.name}}</a>
+                        <a [routerLink]="['/products/product', data.id]">{{data.name}}</a>
                       </strong>
                     </h5>
                     <p class="mb-2 text-muted text-uppercase small">Shirts</p>
@@ -371,7 +371,7 @@
                         <button type="button" class="btn btn-primary btn-sm mr-1 mb-2" (click)="addCart(data)">
                           <i class="fa fa-shopping-cart pr-2"></i>Add to cart
                         </button>
-                        <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
+                        <button type="button" class="btn btn-light btn-sm mr-1 mb-2" [routerLink]="['/products/product', data.id]">
                           <i class="fa fa-info-circle pr-2"></i>Details
                         </button>
                         <button type="button" class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main"
