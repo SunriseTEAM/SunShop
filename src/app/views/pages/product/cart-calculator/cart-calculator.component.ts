@@ -6,7 +6,7 @@ import {
   SimpleChange,
   SimpleChanges,
 } from "@angular/core";
-import { Product } from "../../../../shared/models/product";
+import {Product} from "../../../../shared/models/product";
 import {HttpServiceService} from "../../../../shared/services/http-service.service";
 import {AuthService} from "../../../../shared/services/auth.service";
 import {ProductService} from "../../../../shared/services/product.service";
@@ -24,13 +24,16 @@ export class CartCalculatorComponent implements OnInit {
   cartObj = [];
   cartTotalPrice: any;
   totalValue = 0;
+  rootPrice = 0;
+
   constructor(
     private router: Router,
     public authService: AuthService,
     private productService: ProductService,
     private cartService: CartServiceService,
     private http: HttpServiceService
-  ) {}
+  ) {
+  }
 
   // ngOnChanges(changes: SimpleChanges) {
   //   const dataChanges: SimpleChange = changes.products;
@@ -51,12 +54,17 @@ export class CartCalculatorComponent implements OnInit {
       this.cartTotalPrice = this.cartService.cartTotalPrice;
     });
   }
+
   qtyChange(qty, cartObj) {
+    console.log(cartObj);
+    if (this.rootPrice == 0) {
+      this.rootPrice = cartObj.price;
+    }
     let userId = this.http.getLoginDataByKey("user_id");
     const request = {
       cartId: cartObj.id,
       qty,
-      price: (cartObj.price)*(qty),
+      price: (this.rootPrice) * (qty),
       userId: userId
     };
     this.http
@@ -73,8 +81,10 @@ export class CartCalculatorComponent implements OnInit {
 
   getCartDetailsByUser() {
     this.http
-      .postRequestWithToken('api/addtocart/getCartsByUserId', { "userId":
-          this.http.getLoginDataByKey("user_id")})
+      .postRequestWithToken('api/addtocart/getCartsByUserId', {
+        "userId":
+          this.http.getLoginDataByKey("user_id")
+      })
       .subscribe(
         (data: any) => {
           this.cartObj = data;
@@ -89,12 +99,12 @@ export class CartCalculatorComponent implements OnInit {
   getTotalAmounOfTheCart() {
     const obj = this.cartObj;
     let totalPrice = 0;
-    // tslint:disable-next-line:forin
     for (const o in obj) {
       totalPrice = totalPrice + parseFloat(obj[o].price);
     }
     return totalPrice.toFixed(2);
   }
+
   addCart(cartProductObj) {
     const cartObj = {
       productId: cartProductObj.id,
