@@ -9,7 +9,15 @@
           {{ showUser.name }}
         </div>
         <div *ngIf="isFullNameUpdate" class="col-sm-9 text-secondary">
-          <input type="text" [(ngModel)]="showUser.name">
+          <input  [(ngModel)]="showUser.name" type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your name" required #name="ngModel">
+          <div  *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 3 characters long.
+            </div>
+          </div>
         </div>
       </div>
       <hr>
@@ -17,17 +25,35 @@
         <div class="col-sm-3">
           <h6 class="mb-0">Email</h6>
         </div>
-        <div class="col-sm-9 text-secondary">
+        <div class="col-sm-9 text-secondary" >
           {{ showUser.email }}
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="col-sm-3">
-          <h6 class="mb-0">Phone</h6>
+          <h6 class="mb-0">Password</h6>
         </div>
         <div class="col-sm-9 text-secondary">
+          {{ showUser.password }}
+        </div>
+      </div>
+      <hr>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Phone</h6>
+        </div>
+        <div *ngIf="!isFullNameUpdate" class="col-sm-9 text-secondary">
           {{ showUser.mobile }}
+        </div>
+        <div *ngIf="isFullNameUpdate" class="col-sm-9 text-secondary">
+          <input [(ngModel)]="showUser.mobile" type="text" class="form-control form-control-lg" id="mobile" name="mobile" placeholder="Mobile" required #mobile="ngModel">
+          <div  *ngIf="mobile.invalid && (mobile.dirty ||mobile.touched)">
+            <div *ngIf="mobile.errors.required">
+              Phone is required.
+            </div>
+          </div>
         </div>
       </div>
       <hr>
@@ -40,7 +66,12 @@
           {{ showUser.address }}
         </div>
         <div *ngIf="isFullNameUpdate" class="col-sm-9 text-secondary">
-          <input type="text" [(ngModel)]="showUser.address">
+          <input  [(ngModel)]="showUser.address" type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Address" required #address="ngModel">
+          <div  *ngIf="address.invalid && (address.dirty ||address.touched)">
+            <div *ngIf="address.errors.required">
+              Address is required.
+            </div>
+          </div>
         </div>
       </div>
     </div>
