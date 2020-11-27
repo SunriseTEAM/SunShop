@@ -27,6 +27,7 @@ export class UserAccountComponent implements AfterViewInit {
       this.showUser.email = this.http.getLoginDataByKey("email");
       this.showUser.address = this.http.getLoginDataByKey("address");
       this.showUser.mobile = this.http.getLoginDataByKey("mobile");
+      this.showUser.password = this.http.getLoginDataByKey("password");
       this.showUser.created_at = this.http.getLoginDataByKey("created_at");
       console.log(this.showUser);
     }
