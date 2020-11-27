@@ -10,7 +10,7 @@
       <h6 class="my-0">{{ cart.name }}</h6>
     </div>
     <div>
-      <select  [(ngModel)]="cart.qty" (change)="qtyChange($event.target.value,cart)">
+      <select [(ngModel)]="cart.qty" (change)="qtyChange($event.target.value,cart)">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -25,13 +25,18 @@
     </div>
     <span class="text-muted">$ {{ cart.price }}</span>
   </li>
-  <hr />
+  <hr/>
   <li class="list-group-item d-flex justify-content-between">
     <span>Total (INR)</span>
     <strong>$ {{ cartTotalPrice }}</strong>
   </li>
   <a class="btn btn-primary" [routerLink]="['/products/all-products']"
-    >Continue Shipping</a
+  >Continue Shipping</a
   >
-  <a class="btn btn-default" [routerLink]="['/checkouts']">Checkout</a>
+  <div *ngIf="cartObj?.length > 0; else empty">
+  <a class="btn btn-default" class="btn btn-warning float-right" [routerLink]="['/checkouts']">Checkout</a>
+  </div>
+  <ng-template #empty>
+    <h4 class="text-muted text-center">Cart is empty. Go to get something! :)</h4>
+  </ng-template>
 </ul>
